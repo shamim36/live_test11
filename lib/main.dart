@@ -5,14 +5,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Live Test 11',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: MyHomePage(),
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({Key? key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -74,25 +74,24 @@ class _MyHomePageState extends State<MyHomePage> {
         foregroundColor: Colors.white,
         toolbarHeight: 80,
       ),
-
       body: ListView.builder(
         itemCount: json123.length,
-        itemBuilder: (context , index){
+        itemBuilder: (context, index) {
           return Card(
             child: ListTile(
               title: Text("City : ${json123[index]["city"]}"),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                Text("Temparature : ${json123[index]["temparature"]}C"),
-                Text("Condition : ${json123[index]["city"]}"),
-                Text("Humidity : ${json123[index]["city"]}C"),
-                Text("Wind Speed : ${json123[index]["city"]}%"),
+                  Text("Temperature: ${json123[index]["temperature"]}°C"),
+                  Text("Condition: ${json123[index]["condition"]}"),
+                  Text("Humidity: ${json123[index]["humidity"]}"),
+                  Text("Wind Speed: ${json123[index]["windSpeed"]} km/h"),
                 ],
               ),
             ),
           );
-        }
+        },
       ),
     );
   }
