@@ -85,8 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Text("Temperature: ${json123[index]["temperature"]}°C"),
                   Text("Condition: ${json123[index]["condition"]}"),
-                  Text("Humidity: ${json123[index]["humidity"]}"),
-                  Text("Wind Speed: ${json123[index]["windSpeed"]} km/h"),
+                  Text("Humidity: ${json123[index]["humidity"]}%"),
+                  Text("Wind Speed: ${json123[index]["windSpeed"]} m/s"),
                 ],
               ),
             ),
