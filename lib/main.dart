@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,65 +10,90 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Live Test 11',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  var json123 = [
+    {
+      "city": "New York",
+      "temperature": 20,
+      "condition": "Clear",
+      "humidity": 60,
+      "windSpeed": 5.5
+    },
+    {
+      "city": "Los Angeles",
+      "temperature": 25,
+      "condition": "Sunny",
+      "humidity": 50,
+      "windSpeed": 6.8
+    },
+    {
+      "city": "London",
+      "temperature": 15,
+      "condition": "Partly Cloudy",
+      "humidity": 70,
+      "windSpeed": 4.2
+    },
+    {
+      "city": "Tokyo",
+      "temperature": 28,
+      "condition": "Rainy",
+      "humidity": 75,
+      "windSpeed": 8.0
+    },
+    {
+      "city": "Sydney",
+      "temperature": 22,
+      "condition": "Cloudy",
+      "humidity": 55,
+      "windSpeed": 7.3
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
+        title: Text('Weather Info App'),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        toolbarHeight: 80,
       ),
-      body: Center(
 
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: ListView.builder(
+        itemCount: json123.length,
+        itemBuilder: (context , index){
+          return Card(
+            child: ListTile(
+              title: Text("City : ${json123[index]["city"]}"),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                Text("Temparature : ${json123[index]["temparature"]}C"),
+                Text("Condition : ${json123[index]["city"]}"),
+                Text("Humidity : ${json123[index]["city"]}C"),
+                Text("Wind Speed : ${json123[index]["city"]}%"),
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          );
+        }
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
     );
   }
 }
